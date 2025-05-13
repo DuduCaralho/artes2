@@ -1,99 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ilusão Cinética</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ilusão Cinética Interativa</title>
   <style>
     body {
       margin: 0;
-      background-color: #000;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       overflow: hidden;
-      font-family: sans-serif;
-      color: white;
+      text-align: center;
     }
 
     h1 {
       margin-top: 20px;
-      font-size: 2em;
     }
 
     p {
-      margin-bottom: 20px;
-      font-size: 1em;
-      max-width: 300px;
+      max-width: 400px;
+      font-size: 1rem;
+      color: #ccc;
     }
 
-    .illusion-container {
-      position: relative;
+    .illusion {
       width: 300px;
       height: 300px;
-    }
-
-    .ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border: 3px solid white;
       border-radius: 50%;
-      transform: translate(-50%, -50%);
-      animation: spin 6s linear infinite;
+      background: conic-gradient(
+        #fff 0deg,
+        #000 10deg,
+        #fff 20deg,
+        #000 30deg,
+        #fff 40deg,
+        #000 50deg,
+        #fff 60deg,
+        #000 70deg,
+        #fff 80deg,
+        #000 90deg,
+        #fff 100deg,
+        #000 110deg,
+        #fff 120deg,
+        #000 130deg,
+        #fff 140deg,
+        #000 150deg,
+        #fff 160deg,
+        #000 170deg,
+        #fff 180deg,
+        #000 190deg,
+        #fff 200deg,
+        #000 210deg,
+        #fff 220deg,
+        #000 230deg,
+        #fff 240deg,
+        #000 250deg,
+        #fff 260deg,
+        #000 270deg,
+        #fff 280deg,
+        #000 290deg,
+        #fff 300deg,
+        #000 310deg,
+        #fff 320deg,
+        #000 330deg,
+        #fff 340deg,
+        #000 350deg,
+        #fff 360deg
+      );
+      transition: transform 0.05s linear;
     }
 
-    .ring:nth-child(2) {
-      width: 240px;
-      height: 240px;
-      border-color: #999;
-      animation-direction: reverse;
-      animation-duration: 8s;
+    .illusion-wrapper {
+      width: 300px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spin 10s linear infinite;
     }
 
-    .ring:nth-child(3) {
-      width: 180px;
-      height: 180px;
-      border-color: #666;
-      animation-duration: 10s;
-    }
-
-    .ring:nth-child(4) {
-      width: 120px;
-      height: 120px;
-      border-color: #ccc;
-      animation-direction: reverse;
-      animation-duration: 12s;
-    }
-
-    .ring:nth-child(5) {
-      width: 60px;
-      height: 60px;
-      border-color: #fff;
-      animation-duration: 14s;
+    .illusion-wrapper.fast {
+      animation-duration: 1s;
     }
 
     @keyframes spin {
       from {
-        transform: translate(-50%, -50%) rotate(0deg);
+        transform: rotate(0deg);
       }
       to {
-        transform: translate(-50%, -50%) rotate(360deg);
+        transform: rotate(360deg);
       }
     }
   </style>
 </head>
 <body>
-  <div class="illusion-container">
-    <div class="ring" style="width: 300px; height: 300px;"></div>
-    <div class="ring"></div>
-    <div class="ring"></div>
-    <div class="ring"></div>
-    <div class="ring"></div>
+  <div class="illusion-wrapper" id="wrapper">
+    <div class="illusion"></div>
   </div>
+
   <h1>Ilusão de Ótica</h1>
-  <p>Observe os círculos girando. Seu cérebro tenta acompanhar os movimentos contrários e cria uma sensação de profundidade e vibração.</p>
+  <p>Passe o mouse sobre o círculo e veja como o movimento se intensifica, criando uma sensação de rotação acelerada e vibração visual.</p>
+
+  <script>
+    const wrapper = document.getElementById('wrapper');
+
+    wrapper.addEventListener('mouseenter', () => {
+      wrapper.classList.add('fast');
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      wrapper.classList.remove('fast');
+    });
+  </script>
 </body>
 </html>
